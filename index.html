@@ -223,7 +223,7 @@ footer{margin-top:140px;border-top:3px solid var(--edge);padding:40px 0 56px;col
    <label>Year<select id="yr"><option value="">Select</option><option>1</option><option>2</option><option>3</option><option>4</option></select><span class="err"></span></label>
    <label>WhatsApp number<input id="wa" inputmode="tel" placeholder="+91 98765 43210"><span class="err"></span></label>
    <label class="full">Email ID<input id="em" type="email" autocomplete="email" placeholder="you@example.com"><span class="err"></span></label>
-   <div class="full"><button class="cta sm" id="sub" type="submit" style="border:2px solid #000">REGISTER →</button><div id="fmsg" class="err" role="alert" style="margin-top:12px;font-size:14px;min-height:20px"></div></div>
+   <div class="full"><button class="cta sm" id="sub" type="submit" style="border:2px solid #000">REGISTER →</button><div id="fmsg" class="err" role="alert" style="margin-top:12px;font-size:14px;min-height:20px"></div><div id="srv" class="mono" style="font-size:11px;margin-top:14px;color:var(--mut)"></div></div>
   </form>
   <div id="done" hidden>
    <span class="mono" style="color:var(--grn);font-size:13px">✓ Registration complete</span>
@@ -240,7 +240,7 @@ footer{margin-top:140px;border-top:3px solid var(--edge);padding:40px 0 56px;col
  <div class="soc"><a href="https://www.instagram.com/spark_iiitb/" target="_blank" rel="noopener" aria-label="Instagram">IG</a><a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a><a href="https://chat.whatsapp.com/" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a></div></div></footer>
 
 <script>
-const WEBHOOK_URL="https://script.google.com/macros/s/AKfycbzrksfCSlsJ2EpiGn8qVfc2TtDVYQlYuRS8A51FL2S7VKp4VmDdHESY2w1uMib_S8uz/exec"; // optional: Google Apps Script / backend URL (see setup notes)
+const WEBHOOK_URL="https://script.google.com/macros/s/AKfycbwIcZ_s7LF6nNvLP1Zwg7WsPJ7UGgtDlmAuz5TNPZlHBkco4hDmg2JXVAnfkTCq6xXw/exec"; // optional: Google Apps Script / backend URL (see setup notes)
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 $("#mq").innerHTML="<span>CLIP ✦ PRETEND ✦ SURVIVE ✦ CAUGHT! ✦ BODY SCAN ✦ BLACKOUT ✦ NOBODY IS SAFE ✦ </span>".repeat(8);
 // stars (among-us style drifting dots)
@@ -280,7 +280,7 @@ $("#vent").onclick=()=>{const d=document.createElement("div");d.style.cssText=`p
 console.log("%cThere is a parasite among us.","font:700 18px sans-serif;color:#F2262F");
 // registration
 let reg=null,editing=false;try{reg=JSON.parse(localStorage.getItem("para_reg")||"null")}catch(e){}
-function state(){const d=!!reg&&!editing;$("#form").hidden=d;$("#done").hidden=!d;if(d)show()}
+function state(){if(!window._pg){window._pg=1;ping()}const d=!!reg&&!editing;$("#form").hidden=d;$("#done").hidden=!d;if(d)show()}
 function show(){$("#rn").textContent=reg.id;const L=[["Name",reg.name],["Roll no.",reg.roll],["Program",reg.pg],["Year",reg.yr],["WhatsApp",reg.wa],["Email",reg.em]];$("#dv").innerHTML=L.map(()=>"<div><span></span><div></div></div>").join("");$$("#dv>div").forEach((d,i)=>{d.children[0].textContent=L[i][0];d.children[1].textContent=L[i][1]});$("#mode").textContent=reg.where||""}
 function bad(id,m){const l=$("#"+id).closest("label");l.classList.toggle("bad",!!m);l.querySelector(".err").textContent=m||"";return !!m}
 $("#form").onsubmit=async e=>{e.preventDefault();
@@ -290,17 +290,18 @@ $("#form").onsubmit=async e=>{e.preventDefault();
  const id=reg&&editing?reg.id:"PARA-"+[...crypto.getRandomValues(new Uint8Array(4))].map(n=>n.toString(16).padStart(2,"0")).join("").toUpperCase();
  $("#fmsg").textContent="";const old=reg,wasEdit=editing;reg={...v,id,at:new Date().toISOString()};const btn=$("#sub");btn.disabled=true;btn.textContent="SENDING...";let where="Saved on this device only (demo mode, no server connected).";
  if(WEBHOOK_URL){const undo=m=>{reg=old;btn.disabled=false;btn.textContent=wasEdit?"UPDATE →":"REGISTER →";$("#fmsg").textContent=m||""};
- const ac=new AbortController(),to=setTimeout(()=>ac.abort(),25000);
- try{const r=await fetch(WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({...reg,edit:wasEdit}),signal:ac.signal});clearTimeout(to);const tx=await r.text();let j;
-  try{j=JSON.parse(tx)}catch(x){undo("The server sent an unexpected reply. In Apps Script, set access to Anyone and deploy a new version.");return}
-  if(!j.ok){if(j.dup){undo("");bad("roll","This roll number is already registered.")}else if(j.full)undo("All 300 seats are taken.");else undo("Server error: "+(j.error||"unknown")+". Check the Apps Script setup.");return}
-  where="Saved to the event database."}catch(er){clearTimeout(to);undo(er.name==="AbortError"?"The server took too long. Please try again.":"Could not reach the server. In Apps Script the access must be set to Anyone.");return}}
+ try{const j=await jsonp({action:"register",data:JSON.stringify({...reg,edit:wasEdit})},25000);
+  if(!j||!j.ok){if(j&&j.dup){undo("");bad("roll","This roll number is already registered.")}else if(j&&j.full)undo("All 300 seats are taken.");else undo("Server error: "+((j&&j.error)||"unknown")+". Check the Apps Script setup.");return}
+  where="Saved to the event database."}catch(er){undo(er.message==="timeout"?"No reply from the server. In Apps Script: set access to Anyone, paste the latest script, and deploy a NEW version.":"Could not reach the server. Check the web app URL.");return}}
  reg.where=where;editing=false;try{localStorage.setItem("para_reg",JSON.stringify(reg))}catch(er){}
  btn.disabled=false;btn.textContent="REGISTER →";state();confetti()};
 $("#edit").onclick=()=>{editing=true;$("#name").value=reg.name;$("#roll").value=reg.roll;$("#pg").value=reg.pg;$("#yr").value=reg.yr;$("#wa").value=reg.wa;$("#em").value=reg.em;$("#sub").textContent="UPDATE →";state()};
 $("#again").onclick=()=>{reg=null;editing=false;try{localStorage.removeItem("para_reg")}catch(e){}$("#form").reset();$("#sub").textContent="REGISTER →";state()};
 $("#save").onclick=async()=>{const t=`Among Us: Parasite · Spark Club\nRegistration: ${reg.id}\nName: ${reg.name}\nRoll: ${reg.roll}\nProgram: ${reg.pg} Year ${reg.yr}\nWhatsApp: ${reg.wa}\nEmail: ${reg.em}`;let m="Copied to clipboard";try{await navigator.clipboard.writeText(t)}catch(e){m="Copy failed. Note it down."}$("#save").textContent=m;setTimeout(()=>$("#save").textContent="Save a response",2000)};
 function confetti(){const c=["#F2262F","#FFD23F","#58E02C","#1E6BFF","#B8A5F5"];for(let i=0;i<44;i++){const d=document.createElement("i");d.className="cf";d.style.cssText=`left:${Math.random()*100}vw;background:${c[i%5]};animation-delay:${Math.random()*.5}s;border-radius:${i%2?"50%":"2px"}`;document.body.appendChild(d);setTimeout(()=>d.remove(),3000)}}
+// server connection (JSONP: works without browser CORS rules)
+function jsonp(params,ms){return new Promise((res,rej)=>{const cb="cb"+Date.now()+Math.floor(Math.random()*1e5),sc=document.createElement("script");let t;const clean=()=>{clearTimeout(t);delete window[cb];sc.remove()};t=setTimeout(()=>{clean();rej(new Error("timeout"))},ms||20000);window[cb]=d=>{clean();res(d)};sc.onerror=()=>{clean();rej(new Error("network"))};sc.src=WEBHOOK_URL+"?"+new URLSearchParams({...params,callback:cb}).toString();document.head.appendChild(sc)})}
+function ping(){const el=$("#srv");if(!WEBHOOK_URL){el.textContent="Demo mode: no server URL set";return}el.textContent="Checking server...";jsonp({action:"ping"},9000).then(()=>{el.textContent="Server connected";el.style.color="var(--grn)"}).catch(()=>{el.textContent="Server not reachable. Check the Apps Script deployment.";el.style.color="var(--red)"})}
 // emergency button
 $$(".embw").forEach(w=>w.innerHTML='<button class="emb" aria-label="Emergency button: register now"><span class="base"></span><span class="dome"><b>REGISTER</b><i>NOW</i></span></button>');
 function siren(){try{const a=new(window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator(),g=a.createGain();o.type="square";o.connect(g);g.connect(a.destination);g.gain.value=.04;const t=a.currentTime;for(let i=0;i<6;i++)o.frequency.setValueAtTime(i%2?620:880,t+i*.22);o.start();o.stop(t+1.3)}catch(e){}}
