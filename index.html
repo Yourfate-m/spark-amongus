@@ -91,7 +91,14 @@ input:focus,select:focus{outline:0;box-shadow:4px 4px 0 var(--red);transform:tra
 .warn{margin-top:26px;border:3px solid #000;background:var(--yel);color:#000;padding:20px 22px;font-size:15px}.warn .cta{margin-top:12px;display:inline-block}
 #mode{font-size:13px;color:var(--mut);margin-top:12px}
 footer{margin-top:140px;border-top:3px solid var(--edge);padding:40px 0 56px;color:var(--mut);font-size:14px;position:relative;z-index:2}footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
-.soc{display:flex;gap:10px}.soc a{width:42px;height:42px;border:2px solid var(--edge);display:grid;place-items:center;font:400 18px Bangers;color:var(--ink);transition:.15s}.soc a:hover{background:var(--yel);color:#000;transform:rotate(-8deg)}
+.soc{display:flex;gap:12px;align-items:center}
+.soc a{width:44px;height:44px;border:2px solid var(--edge);display:grid;place-items:center;border-radius:4px;transition:transform .2s,border-color .2s,background .2s;color:var(--ink)}
+.soc a svg{width:22px;height:22px;display:block;transition:transform .2s}
+.soc a:hover{transform:translateY(-4px) rotate(-6deg)}
+.soc a.ig:hover{background:#E1306C;border-color:#E1306C;color:#fff}
+.soc a.li:hover{background:#0A66C2;border-color:#0A66C2;color:#fff}
+.soc a.wa:hover{background:#25D366;border-color:#25D366;color:#fff}
+.soc a svg{fill:currentColor}
 #vent{display:inline-block;width:44px;height:14px;background:repeating-linear-gradient(90deg,var(--line) 0 3px,transparent 3px 7px);border:1px solid var(--line);cursor:pointer;vertical-align:middle;margin-left:12px}
 #cur{position:fixed;left:0;top:0;z-index:999;pointer-events:none;display:none;width:34px;height:34px;margin:-6px 0 0 -6px}
 #cur svg{width:100%;height:100%;transition:transform .15s;transform:rotate(-28deg);filter:drop-shadow(0 0 5px var(--grn))}
@@ -102,6 +109,7 @@ footer{margin-top:140px;border-top:3px solid var(--edge);padding:40px 0 56px;col
 #bo{position:fixed;inset:0;background:#000;z-index:997;display:grid;place-items:center;text-align:center;color:#fff;opacity:0;pointer-events:none;transition:opacity .3s}#bo.on{opacity:1;pointer-events:auto}#bo b{font:400 clamp(50px,10vw,130px) Bangers;color:var(--red)}
 #toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,130px);background:var(--yel);color:#000;border:3px solid #000;padding:12px 22px;font:400 22px Bangers;letter-spacing:.05em;z-index:99;transition:transform .45s cubic-bezier(.2,1.4,.4,1)}#toast.s{transform:translate(-50%,0)}
 .cf{position:fixed;top:-20px;width:10px;height:10px;z-index:90;pointer-events:none;animation:fall 2.2s ease-in forwards}@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+.dl{display:grid;gap:28px}.dlc{background:var(--panel);border:3px solid var(--edge);box-shadow:8px 8px 0 var(--sh);padding:32px;position:relative}.dlc::before{content:attr(data-n);position:absolute;right:16px;top:-2px;font:400 72px Bangers;color:transparent;-webkit-text-stroke:2px var(--line);line-height:1}.dlc h3{font-size:32px;margin-bottom:12px;letter-spacing:.04em;font-family:Bangers}.dlc p{color:var(--mut);font-size:16px;margin:0 0 10px}.dlc p:last-child{margin:0}.dlc code{font-family:"Space Mono",monospace;font-size:13px;background:color-mix(in srgb,var(--acc) 14%,transparent);color:var(--acc);padding:2px 7px;border-radius:4px}.dlc .tag2{display:inline-flex;align-items:center;gap:7px;border:2px solid var(--edge);border-radius:4px;padding:5px 12px;font:400 18px Bangers;letter-spacing:.05em;margin:4px 4px 4px 0;background:var(--bg)}.dlc .tag2.red{border-color:var(--red);color:var(--red)}.dlc .tag2.blue{border-color:var(--blue);color:var(--blue)}.dlc .tag2.grn{border-color:var(--grn);color:var(--grn)}.verdict{margin-top:18px;border-left:4px solid var(--grn);padding:12px 16px;background:color-mix(in srgb,var(--grn) 10%,transparent);font-size:15px;color:var(--mut)}.verdict b{color:var(--ink)}.timeline{display:flex;gap:0;flex-direction:column;margin:16px 0;padding-left:20px;border-left:3px dashed var(--line)}.timeline li{padding:4px 0 12px 16px;color:var(--mut);font-size:16px;position:relative;list-style:none}.timeline li::before{content:"";position:absolute;left:-8px;top:10px;width:10px;height:10px;border-radius:50%;background:var(--acc);border:2px solid var(--bg)}.timeline li b{color:var(--ink)}.hmm{background:color-mix(in srgb,var(--yel) 16%,transparent);border:2px dashed var(--yel);padding:12px 16px;margin:14px 0;font-size:15px;color:var(--mut)}.hmm b{color:var(--ink)}
 .rv{opacity:0;transform:translateY(34px) rotate(1deg);transition:opacity .7s,transform .7s}.rv.on2{opacity:1;transform:none}
 .lg2{position:relative;width:40px;height:40px;border-radius:11px;overflow:hidden;display:block;border:2px solid var(--edge);flex:none}.lg2 img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;background:#000}.brand .lg2 svg{width:100%;height:100%;color:inherit}
 .hero .ttl{margin:48px 0 14px}.embw{display:flex;justify-content:center}
@@ -118,7 +126,17 @@ footer{margin-top:140px;border-top:3px solid var(--edge);padding:40px 0 56px;col
 .pc{position:relative;border:5px solid #000;background:#000;aspect-ratio:400/520;overflow:hidden}.pc svg,.pc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .lab{position:absolute;left:-20px;bottom:-16px;background:#fff;color:#000;border:3px solid #000;font:400 22px Bangers;padding:6px 16px;transform:rotate(-3deg);letter-spacing:.04em;box-shadow:4px 4px 0 #000;z-index:3}
 .tg{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}.tm{display:block;font:400 11px "Space Mono";letter-spacing:.18em;color:var(--red);text-transform:uppercase;margin-bottom:8px}.pn.t h3{font-size:30px}
-.fin{font:400 clamp(44px,8.2vw,140px)/.98 Bangers;text-align:center;padding:10px 24px 34px;transform:skewX(-9deg) rotate(-1.2deg);background:linear-gradient(#FFD23F 0 36%,#E5301A 36% 52%,#FFD23F 52% 64%,#140e04 64% 82%,#FFD23F 82%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(4px 4px 0 #E5301A) drop-shadow(8px 8px 0 #000);position:relative;z-index:2;margin-bottom:26px}
+.fin{position:relative;text-align:center;padding:26px 24px 10px;z-index:2;overflow:visible}
+.fin-txt{display:inline-block;font:400 clamp(44px,8.2vw,140px)/.98 Bangers;transform:skewX(-9deg) rotate(-1.2deg);background:linear-gradient(#FFD23F 0 36%,#E5301A 36% 52%,#FFD23F 52% 64%,#140e04 64% 82%,#FFD23F 82%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(4px 4px 0 #E5301A) drop-shadow(8px 8px 0 #000);position:relative}
+.sp{position:absolute;pointer-events:none;animation:sparkle var(--dur,1.2s) ease-out var(--del,0s) infinite}
+.sp::before{content:"";display:block;width:var(--sz,12px);height:var(--sz,12px);background:var(--sc,#FFD23F);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);animation:spins var(--dur,1.2s) linear var(--del,0s) infinite}
+@keyframes sparkle{0%{opacity:0;transform:translate(0,0) scale(0)}25%{opacity:1}100%{opacity:0;transform:translate(var(--tx,0px),var(--ty,-60px)) scale(1)}}
+@keyframes spins{to{transform:rotate(360deg)}}
+.ember{position:absolute;pointer-events:none;width:5px;height:5px;border-radius:50%;background:var(--ec,#FFD23F);animation:rise var(--rd,1.8s) ease-out var(--rdel,0s) infinite}
+@keyframes rise{0%{opacity:0;transform:translateY(0) scale(1)}30%{opacity:1}100%{opacity:0;transform:translateY(var(--ry,-80px)) translateX(var(--rx,0px)) scale(0)}}
+.lft{position:relative;display:inline-flex;align-items:center;gap:10px}
+.lft::before,.lft::after{content:"";flex:none;width:40px;height:3px;background:linear-gradient(90deg,transparent,var(--red));border-radius:2px}
+.lft::after{background:linear-gradient(270deg,transparent,var(--red))}
 @media (max-width:920px){.tg{grid-template-columns:1fr}.emb{transform:scale(.88)}}
 @media (max-width:920px){#top{padding:16px 18px}.g3,.core,.win,.rg,form,.det{grid-template-columns:1fr}.wrap{padding:0 20px}.ttl span{-webkit-text-stroke:3px var(--stroke)}.hud,.fl{display:none}.mb small{display:none}.gt{flex-direction:column;text-align:center}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
@@ -133,7 +151,7 @@ footer{margin-top:140px;border-top:3px solid var(--edge);padding:40px 0 56px;col
 <div id="top">
  <a class="brand" id="logo" href="#home"><span class="lg2"><svg viewBox="0 0 64 64"><use href="#logomark"/></svg><img src="logo.png" alt="" onerror="this.remove()"></span>SPARK CLUB</a>
  <div class="menu" id="menu"><button class="mb" aria-haspopup="true"><i>✳</i><span><small>SKELD · LIVE</small><b>SHIP MAP</b></span><em>⌄</em></button>
-  <div class="dd"><a href="#weapon">The Weapon</a><a href="#tasks">Small Tasks</a><a href="#day1">Day 1 · Qualifiers</a><a href="#day2">Day 2 · Finale</a><a href="#register">Register →</a><button id="th">Light / Dark</button></div></div>
+  <div class="dd"><a href="#weapon">The Weapon</a><a href="#tasks">Small Tasks</a><a href="#day1">Day 1 · Qualifiers</a><a href="#day2">Day 2 · Finale</a><a href="#register">Register →</a><button id="th">Light / Dark</button><a href="#devlog">Dev Log</a></div></div>
 </div>
 
 <div id="home"><main>
@@ -236,8 +254,71 @@ footer{margin-top:140px;border-top:3px solid var(--edge);padding:40px 0 56px;col
  </div>
 </div></section>
 
-<footer><div class="fin">THE SPARK<br>CONTINUES...</div><div class="wrap"><div>Spark Club, IIIT Bhopal · Fan event, not affiliated with Innersloth<span id="vent" title="sus" role="button" aria-label="Vent"></span></div>
- <div class="soc"><a href="https://www.instagram.com/spark_iiitb/" target="_blank" rel="noopener" aria-label="Instagram">IG</a><a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a><a href="https://chat.whatsapp.com/" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a></div></div></footer>
+
+<section class="sec" id="devlog"><div class="wrap">
+ <span class="k mono">Mission log · AI workflow</span>
+ <h2 class="rv">How this ship was <span class="r">actually</span> <span class="b">built.</span></h2>
+ <p class="sub rv">This is an honest, detailed account of the build: what AI did, what I did, where it failed, and why the decisions were made. Written for the evaluators so the interview can go somewhere useful.</p>
+ <div class="dl">
+
+  <div class="dlc rv" data-n="01"><h3>The Model &amp; the Tools</h3>
+   <p>The entire site was built in different conversations with <code>Claude Sonnet 5.5 and Gemini 3.1 Pro </code> through both apis and platforms. No Copilot, no v0, small fixes were made using vs code by me. The AI wrote the HTML, CSS and JS. I directed every decision.</p>
+   <p>Why Claude over Antigravity for this? Because of my previous works with claude I had a familiarity with the platform.</p>
+   <div class="hmm"><b>Why not a framework like React or Next?</b> The brief said laptop-first, self-contained, deploy on Vercel. A single HTML file can do all of that with zero build step. Adding a framework would have meant a build pipeline, a package.json and a node_modules folder just to serve static content.</div></div>
+
+  <div class="dlc rv" data-n="02"><h3>Prompt #1: The Brief as Context Dump</h3>
+   <p>The first message was definitely not "make an Among Us website". It was a full context dump: the task PDF, four screenshots of the old Spark registration site for inspiration, the game mechanics I had designed on my own and further refined by gemini (the clothespin mechanic, the chaos tasks, the tribunal), a reference screenshot of the comic-style hero I wanted, and explicit constraints.</p>
+   <p>The principle here is that AI works on pattern completion. If you give it thin context, it fills the gaps with whatever is statistically most common, which is usually a generic Bootstrap site. A rich context forces it into your specific corner of the design space.</p>
+   <div class="verdict"><b>What I gave it:</b> the PDF, 4 reference screenshots, the registration form structure from the old site, the game mechanics, a style reference image, "laptop-first", "Among Us theme", "no prior experience needed". That is what the first message looked like.</div></div>
+
+  <div class="dlc rv" data-n="03"><h3>Iteration 1 → 2 → 3: Direction, Not Requests</h3>
+   <p>The first version was goofy. The second was too plain. The third matched the vision. Each time I gave specific directional feedback, not vague requests.</p>
+   <ul class="timeline">
+    <li><b>Version 1:</b> "too goofy, make it professional and stylish." But I also added new requirements: light/dark mode, emergency button for register, all the game mechanics explained, tasks section, and the new form fields (program, year).</li>
+    <li><b>Version 2:</b> "design is perfect, continue with the game mechanics now". I gave it the clothespin mechanic details, the chaos tasks rationale, the poster reference URL, the footer image, and asked it to keep the specific design language from the reference.</li>
+    <li><b>Version 3 (current):</b> detail refinements. Logo, cursor, title glitch, light mode text smudge were fixed.</li>
+   </ul>
+   <div class="hmm"><b>The lesson about chaos tasks:</b> Thought that the 2 mins gap between chaos tasks would have been just the students talking amongst themselves, So instead added additional tasks that are to be performed to collect stamps for Shield.</div></div>
+
+  <div class="dlc rv" data-n="04"><h3>The Backend Decision</h3>
+   <p>Three different approaches were tried before the form worked:</p>
+   <ul class="timeline">
+    <li><b>The First Approach<code>using google forms embed</code>  <code></code>:</b> Firstly I thought of adding a google form embed for registration then considered it pretty basic and moved to the next approach.</li>
+    <li><b>Attempt 1 — <code>fetch()</code> with <code>no-cors</code>:</b> the request fired but the browser discarded the response. The page couldn't tell if it worked, so it showed success even on failure.</li>
+    <li><b>Attempt 2 — <code>fetch()</code> with JSON headers:</b> Google's Apps Script deployment was correctly set to "Anyone", but the browser blocked it for having no CORS header on the reply. The button did nothing.</li>
+    <li><b>Attempt 3 — JSONP:</b> inject a <code>&lt;script&gt;</code> tag whose <code>src</code> is the request URL. Browsers never block script loads. The server wraps its response in the callback function name and the browser executes it. This bypasses CORS entirely without needing server-side changes.</li>
+   </ul>
+   <p>The root problem was a naming clash I found with a simulation test: the poster artwork and the program dropdown both had the internal name <code>pg</code>. When you pressed Register, the form code picked up the SVG gradient instead of the dropdown value and crashed silently. The JSONP change and the crash were separate bugs fixed in the same pass.</p>
+   <div class="verdict"><b>How the simulation caught it:</b> Claude ran the page in a headless browser (jsdom) inside the conversation itself, filled the form and pressed submit programmatically, and read back whether the success screen appeared. That is how the duplicate-ID crash was found. No DevTools, no live browser.</div></div>
+
+  <div class="dlc rv" data-n="05"><h3>Three Real Bugs That Would Have Shipped</h3>
+   <p>Without testing, these would have gone live:</p>
+   <div class="tag2 red">Bug 1</div><p>The title flickered when the cursor crossed its edge. The heading had a hover animation that conflicted with its entrance animation. The title's skew meant the mouse kept entering and leaving. Fixed: title ignores mouse entirely.</p>
+   <div class="tag2 red">Bug 2</div><p>The Register button did nothing. Two elements in the same page shared the name <code>pg</code> (the poster gradient and the program dropdown). The form code grabbed the SVG element at submit, got undefined instead of a string, and crashed. Fixed: renamed the SVG elements.</p>
+   <div class="tag2 red">Bug 3</div><p>Light mode had smudged headings. In dark mode, cream text on a dark background with a black outline and black offset shadow looks like a comic. In light mode, black text with a black outline and a black shadow on a cream background turns into a single smeared blob. Fixed: headings use white text with the outline in light mode, so the contrast is correct in both modes.</p></div>
+
+  <div class="dlc rv" data-n="06"><h3>What AI Is Bad At (On This Project)</h3>
+   <p>This is the part most people leave out of their AI workflow write-ups.</p>
+   <div class="tag2 blue">Bad at this</div><p><b>Catching its own naming collisions.</b> The <code>pg</code> clash only appeared when I ran a simulation. The AI generated a perfectly readable gradient and a perfectly readable dropdown in separate parts of the file and never considered that they shared a namespace. Large files are where this happens, and a single-file site is basically one giant namespace.</p>
+   <div class="tag2 blue">Bad at this</div><p><b>Cross-origin constraints.</b> The AI's first two backend approaches were plausible but wrong for this specific deployment. It knew about CORS in general. It did not know that Google Apps Script adds no CORS header to responses by default, which is not standard behaviour. That required me to recognise the pattern from the error and push for JSONP specifically.</p>
+   <div class="tag2 blue">Bad at this</div><p><b>Knowing when it is in demo mode.</b> The page ran in the Claude artifact preview, which is a different runtime from a deployed Vercel site. Several early tests looked fine in preview and failed in deployment because preview has different network permissions. The simulation work was to close that gap.</p>
+   <div class="hmm"><b>The honest summary:</b> AI is a very fast, very capable junior developer. It does not have the experience to know which corner cases will bite you at 1 AM before a deadline. That part is still on you.</div></div>
+
+  
+ </div></div></div>
+</section>
+
+<footer>
+<div class="fin" id="fin">
+ <div class="fin-txt" id="fintxt">THE SPARK<br>CONTINUES...</div>
+</div>
+<div class="wrap"><div class="lft">Spark Club, IIIT Bhopal · Fan event, not affiliated with Innersloth<span id="vent" title="sus" role="button" aria-label="Vent"></span></div>
+ <div class="soc">
+  <a href="https://www.instagram.com/spark_iiitb/" target="_blank" rel="noopener" aria-label="Instagram" class="ig"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+  <a href="https://www.linkedin.com/company/spark-iiitb/" target="_blank" rel="noopener" aria-label="LinkedIn" class="li"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  <a href="https://chat.whatsapp.com/" target="_blank" rel="noopener" aria-label="WhatsApp" class="wa"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+ </div>
+</div></footer>
 
 <script>
 const WEBHOOK_URL="https://script.google.com/macros/s/AKfycbwIcZ_s7LF6nNvLP1Zwg7WsPJ7UGgtDlmAuz5TNPZlHBkco4hDmg2JXVAnfkTCq6xXw/exec"; // optional: Google Apps Script / backend URL (see setup notes)
@@ -277,6 +358,16 @@ addEventListener("keydown",e=>{if(/INPUT|SELECT/.test(e.target.tagName))return;b
 let lc=0;$("#logo").addEventListener("click",()=>{if(++lc===5){toast("CAUGHT! Logos cannot be trusted.");lc=0}});
 $("#bigpin").onclick=()=>toast("Never clip skin. Clothes only.");
 $("#vent").onclick=()=>{const d=document.createElement("div");d.style.cssText=`position:fixed;bottom:-90px;left:${15+Math.random()*70}vw;width:70px;height:74px;z-index:50;pointer-events:none;color:hsl(${Math.random()*360},70%,60%);transition:bottom .5s`;d.innerHTML='<svg width="70" height="74"><use href="#cm"/></svg>';document.body.appendChild(d);setTimeout(()=>d.style.bottom="20px",30);setTimeout(()=>d.style.bottom="-90px",1800);setTimeout(()=>d.remove(),2500);toast("Venting detected!")};
+// Spark animation
+(function(){const fin=document.getElementById("fin"),txt=document.getElementById("fintxt");if(!fin||!txt)return;
+const io2=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){buildSparks();io2.unobserve(fin)}})},{threshold:.4});
+io2.observe(fin);
+function buildSparks(){
+ const cols=["#FFD23F","#F2262F","#fff","#FFD23F","#E5301A","#FFD23F"];
+ const em=["#FFD23F","#F2262F","#ff8c00","#fff200"];
+ for(let i=0;i<18;i++){const sp=document.createElement("div");sp.className="sp";const sz=8+Math.random()*14;sp.style.cssText=`--sz:${sz}px;--sc:${cols[i%cols.length]};--dur:${1+Math.random()*.8}s;--del:${Math.random()*2}s;--tx:${-40+Math.random()*80}px;--ty:${-50-Math.random()*60}px;left:${10+Math.random()*80}%;top:${20+Math.random()*60}%`;fin.appendChild(sp)}
+ for(let i=0;i<28;i++){const e=document.createElement("div");e.className="ember";e.style.cssText=`--ec:${em[i%em.length]};--rd:${1.4+Math.random()*1.4}s;--rdel:${Math.random()*2.4}s;--ry:${-50-Math.random()*90}px;--rx:${-30+Math.random()*60}px;left:${5+Math.random()*90}%;top:${30+Math.random()*50}%`;fin.appendChild(e)}
+}})();
 console.log("%cThere is a parasite among us.","font:700 18px sans-serif;color:#F2262F");
 // registration
 let reg=null,editing=false;try{reg=JSON.parse(localStorage.getItem("para_reg")||"null")}catch(e){}
